@@ -1,0 +1,14 @@
+.magic-box-red {
+    height: 100px;
+    width: 100px;
+}
+
+.magic-box-red {
+    background-color: red;
+}
+
+.magic-box-green {
+    background-color: green;
+    height: 200px;
+    width: 200px;
+}

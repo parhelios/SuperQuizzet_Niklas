@@ -115,3 +115,16 @@ for (const animal of animals) {
 div2.appendChild(ul2);
 
 document.body.children[1].insertBefore(div2, myClass[0]);
+
+//-----------------------------------------------
+
+const magicBox = document.getElementsByClassName("magic-box")[0];
+
+magicBox.addEventListener("mouseover", () => {
+  magicBox.classList.remove("magic-box-red");
+  magicBox.classList.add("magic-box-green");
+});
+magicBox.addEventListener("mouseout", () => {
+  magicBox.classList.remove("magic-box-green");
+  magicBox.classList.add("magic-box-red");
+});
