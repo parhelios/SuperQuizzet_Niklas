@@ -65,13 +65,53 @@ console.log(myClass);
 //   }
 // }
 
-for (const div of myClass) {
-  for (const child of div.children) {
-    console.log(child);
-    child.innerText = "banan";
-  }
-}
+const firstHeader = document.createElement("h2");
+firstHeader.innerText = "Första";
 
-const nyH1 = document.createElement("h1");
-nyH1.innerText = "Apa";
-document.body.append(nyH1);
+const secondHeader = document.createElement("h2");
+secondHeader.innerText = "Andra";
+
+// myClass[0].appendChild(firstHeader);
+// myClass[1].appendChild(secondHeader);
+
+const firstP = myClass[0].children[0];
+const secondP = myClass[1].children[0];
+
+myClass[0].insertBefore(firstHeader, firstP);
+myClass[1].insertBefore(secondHeader, secondP);
+
+// for (const div of myClass) {
+//   for (const child of div.children) {
+//     console.log(child);
+//     child.innerText = `Space unicorn
+// Soaring through the stars
+// Delivering the rainbows all around the world
+// Space unicorn
+// Shining in the night
+// Smiles and hugs forever
+// All around the world
+// So pure of heart
+// And strong of mind
+// So true of aim with his marshmallow laser
+// Marshmallow laser
+// Space unicorn
+// Soaring through the stars
+// Delivering the rainbows all around the world`;
+//   }
+// }
+//----------------------------------------------
+const animals = ["Hund", "Katt", "Kanin"];
+
+const div2 = document.createElement("div");
+const ul2 = document.createElement("ul");
+
+for (const animal of animals) {
+  const li2 = document.createElement("li");
+
+  li2.innerText = animal;
+
+  ul2.appendChild(li2);
+}
+div2.appendChild(ul2);
+
+document.body.children[1].insertBefore(div2, myClass[0]);
