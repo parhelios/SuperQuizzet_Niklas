@@ -10,6 +10,7 @@ btn.addEventListener("click", () => {
   countDisplay.innerText = counter;
 });
 
+//--------------------------------------------------
 const header = document.getElementById("header1");
 
 header.addEventListener("mouseover", () => {
@@ -18,4 +19,19 @@ header.addEventListener("mouseover", () => {
 
 header.addEventListener("mouseout", () => {
   header.classList.remove("header-color");
+});
+
+//--------------------------------------------------
+
+const todoList = document.getElementById("toDo");
+const inputToDo = document.getElementById("inputToDo");
+const addBtn = document.getElementById("addToDo");
+
+addBtn.addEventListener("click", () => {
+  const newToDoLi = document.createElement("li");
+
+  newToDoLi.innerText = inputToDo.value;
+  console.log(newToDoLi);
+
+  todoList.appendChild(newToDoLi);
 });
