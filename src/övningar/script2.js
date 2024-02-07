@@ -9,3 +9,13 @@ btn.addEventListener("click", () => {
 
   countDisplay.innerText = counter;
 });
+
+const header = document.getElementById("header1");
+
+header.addEventListener("mouseover", () => {
+  header.classList.add("header-color");
+});
+
+header.addEventListener("mouseout", () => {
+  header.classList.remove("header-color");
+});
