@@ -28,15 +28,50 @@ footer1.innerHTML = `
 </ul>
 `;
 
+//----------------------------------------
+const links = [
+  "https://www.google.com",
+  "https://www.w3schools.com",
+  "https://www.youtube.com",
+];
+
+const ul = document.createElement("ul");
+
+for (const link of links) {
+  const li = document.createElement("li");
+  const a = document.createElement("a");
+
+  a.href = link;
+  a.innerText = link;
+  a.target = "_blank";
+
+  li.appendChild(a);
+  ul.appendChild(li);
+}
+footer1.appendChild(ul);
+
+//-------------------------------------
 const myClass = document.getElementsByClassName("myClass");
 console.log(myClass);
 
-for (let i = 0; i < myClass.length; i++) {
-  const children = myClass[i].children;
+// for (let i = 0; i < myClass.length; i++) {
+//   const children = myClass[i].children;
+//   console.log(children);
 
-  for (let j = 0; j < children.length; j++) {
-    if (children[j].tagName === "P") {
-      children[j].textContent = "hej";
-    }
+//   for (let j = 0; j < children.length; j++) {
+//     if (children[j].tagName === "P") {
+//       children[j].textContent = "hej";
+//     }
+//   }
+// }
+
+for (const div of myClass) {
+  for (const child of div.children) {
+    console.log(child);
+    child.innerText = "banan";
   }
 }
+
+const nyH1 = document.createElement("h1");
+nyH1.innerText = "Apa";
+document.body.append(nyH1);
