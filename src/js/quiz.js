@@ -111,7 +111,7 @@ function applyStyles(
   trueBtn,
   falseBtn
 ) {
-  li.classList.add("list-group-item", "bg-dark", "border-danger");
+  li.classList.add("list-group-item", "bg-dark");
   card.classList.add("card", "bg-dark", "container");
   cardBody.classList.add("card-body", "row");
   cardFooter.classList.add(
@@ -121,6 +121,6 @@ function applyStyles(
     "justify-content-center"
   );
   cardTitle.classList.add("card-title", "text-info", "text-center");
-  trueBtn.classList.add("btn", "btn-success", "mx-1", "col-2");
-  falseBtn.classList.add("btn", "btn-danger", "mx-1", "col-2");
+  trueBtn.classList.add("btn", "btn-outline-success", "mx-1", "col-2");
+  falseBtn.classList.add("btn", "btn-outline-danger", "mx-1", "col-2");
 }
