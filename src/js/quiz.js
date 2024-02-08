@@ -6,3 +6,5 @@ class Question {
 }
 
 const questions = [new Question("Hej", true), new Question("Då", false)];
+
+console.log(questions);
