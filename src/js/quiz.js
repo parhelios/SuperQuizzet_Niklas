@@ -47,12 +47,21 @@ for (const q of questions) {
         console.log("Correct answer");
         scoreCount++;
         score.innerText = scoreCount;
+
+        cardBody.classList.add("bg-success");
+        cardTitle.classList.remove("text-info");
+        cardTitle.classList.add("text-white");
       }
     } else {
       {
         console.log("Incorrect answer");
+        cardBody.classList.add("bg-danger");
+        cardTitle.classList.remove("text-info");
+        cardTitle.classList.add("text-white");
       }
     }
+    trueBtn.disabled = true;
+    falseBtn.disabled = true;
   };
 
   falseBtn.innerText = "False";
@@ -62,12 +71,21 @@ for (const q of questions) {
         console.log("Correct answer");
         scoreCount++;
         score.innerText = scoreCount;
+
+        cardBody.classList.add("bg-success");
+        cardTitle.classList.remove("text-info");
+        cardTitle.classList.add("text-white");
       }
     } else {
       {
         console.log("Incorrect answer");
+        cardBody.classList.add("bg-danger");
+        cardTitle.classList.add("text-white");
+        cardTitle.classList.remove("text-info");
       }
     }
+    trueBtn.disabled = true;
+    falseBtn.disabled = true;
   };
 
   cardTitle.innerText = q.statement;
