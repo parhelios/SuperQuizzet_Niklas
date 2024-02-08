@@ -10,6 +10,9 @@ const questions = [new Question("Hej", true), new Question("Då", false)];
 console.log(questions);
 
 const questionsList = document.querySelector("#questions");
+const score = document.querySelector("#score");
+
+let scoreCount = 0;
 
 console.log(questionsList);
 
@@ -27,13 +30,45 @@ for (const q of questions) {
   li.classList.add("list-group-item", "bg-dark", "border-danger");
   card.classList.add("card", "bg-dark", "container");
   cardBody.classList.add("card-body", "row");
-  cardFooter.classList.add("card-footer", "row", "container");
+  cardFooter.classList.add(
+    "card-footer",
+    "row",
+    "container",
+    "justify-content-center"
+  );
   cardTitle.classList.add("card-title", "text-info", "text-center");
-  trueBtn.classList.add("btn", "btn-success", "mx-1", "col");
-  falseBtn.classList.add("btn", "btn-danger", "mx-1", "col");
+  trueBtn.classList.add("btn", "btn-success", "mx-1", "col-2");
+  falseBtn.classList.add("btn", "btn-danger", "mx-1", "col-2");
 
   trueBtn.innerText = "True";
+  trueBtn.onclick = () => {
+    if (q.correctAnswer === true) {
+      {
+        console.log("Correct answer");
+        scoreCount++;
+        score.innerText = scoreCount;
+      }
+    } else {
+      {
+        console.log("Incorrect answer");
+      }
+    }
+  };
+
   falseBtn.innerText = "False";
+  falseBtn.onclick = () => {
+    if (q.correctAnswer === false) {
+      {
+        console.log("Correct answer");
+        scoreCount++;
+        score.innerText = scoreCount;
+      }
+    } else {
+      {
+        console.log("Incorrect answer");
+      }
+    }
+  };
 
   cardTitle.innerText = q.statement;
 
