@@ -124,3 +124,5 @@ function applyStyles(
   trueBtn.classList.add("btn", "btn-outline-success", "mx-1", "col-2");
   falseBtn.classList.add("btn", "btn-outline-danger", "mx-1", "col-2");
 }
+
+
