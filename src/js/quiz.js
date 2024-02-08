@@ -5,114 +5,34 @@ class Question {
   }
 }
 
-const json = `{
-  "response_code": 0,
-  "results": [
-    {
-      "type": "boolean",
-      "difficulty": "easy",
-      "category": "Entertainment: Video Games",
-      "question": "In &quot;Sonic Adventure&quot;, you are able to transform into Super Sonic at will after completing the main story.",
-      "correct_answer": "False",
-      "incorrect_answers": ["True"]
-    },
-    {
-      "type": "boolean",
-      "difficulty": "easy",
-      "category": "Entertainment: Television",
-      "question": "&quot;The Simpsons&quot; family is named after creator Matt Groening&#039;s real family.",
-      "correct_answer": "True",
-      "incorrect_answers": ["False"]
-    },
-    {
-      "type": "boolean",
-      "difficulty": "easy",
-      "category": "Entertainment: Video Games",
-      "question": "The PlayStation was originally a joint project between Sega and Sony that was a Sega Genesis with a disc drive.",
-      "correct_answer": "False",
-      "incorrect_answers": ["True"]
-    },
-    {
-      "type": "boolean",
-      "difficulty": "easy",
-      "category": "General Knowledge",
-      "question": "The color orange is named after the fruit.",
-      "correct_answer": "True",
-      "incorrect_answers": ["False"]
-    },
-    {
-      "type": "boolean",
-      "difficulty": "easy",
-      "category": "Geography",
-      "question": "Ottawa is the capital of Canada.",
-      "correct_answer": "True",
-      "incorrect_answers": ["False"]
-    },
-    {
-      "type": "boolean",
-      "difficulty": "easy",
-      "category": "Entertainment: Film",
-      "question": "The movie &quot;The Nightmare before Christmas&quot; was all done with physical objects.",
-      "correct_answer": "True",
-      "incorrect_answers": ["False"]
-    },
-    {
-      "type": "boolean",
-      "difficulty": "easy",
-      "category": "General Knowledge",
-      "question": "On average, at least 1 person is killed by a drunk driver in the United States every hour.",
-      "correct_answer": "True",
-      "incorrect_answers": ["False"]
-    },
-    {
-      "type": "boolean",
-      "difficulty": "easy",
-      "category": "Entertainment: Video Games",
-      "question": "Each piece in Tetris is called a tetris.",
-      "correct_answer": "False",
-      "incorrect_answers": ["True"]
-    },
-    {
-      "type": "boolean",
-      "difficulty": "easy",
-      "category": "Entertainment: Video Games",
-      "question": "Big the Cat is a playable character in &quot;Sonic Generations&quot;.",
-      "correct_answer": "False",
-      "incorrect_answers": ["True"]
-    },
-    {
-      "type": "boolean",
-      "difficulty": "easy",
-      "category": "Science: Gadgets",
-      "question": "Microphones can be used not only to pick up sound, but also to project sound similar to a speaker.",
-      "correct_answer": "True",
-      "incorrect_answers": ["False"]
-    }
-  ]
+const questions = [];
+
+async function getQuestions() {
+  const triviaUrl =
+    "https://opentdb.com/api.php?amount=10&difficulty=easy&type=boolean";
+
+  const response = await fetch(triviaUrl);
+  const results = await response.json();
+
+  if (results["response_code"] != 0) {
+    return;
+  }
+
+  for (const fråga of results["results"]) {
+    let correctAnswer = fråga["correct_answer"] === "True";
+
+    const q = new Question(fråga["question"], correctAnswer);
+    questions.push(q);
+  }
+  displayQuestions();
 }
-`;
 
-const response = JSON.parse(json);
-
-const q2 = response["results"];
-
-const questions = [new Question("Hej", true), new Question("Då", false)];
-
-for (const fråga of q2) {
-  let correctAnswer = fråga["currect_answer"] === "True";
-
-  const question = new Question(fråga["question"], correctAnswer);
-  questions.push(question);
-}
+getQuestions();
 
 const questionsList = document.querySelector("#questions");
 const score = document.querySelector("#score");
 
 let scoreCount = 0;
-
-console.log(questionsList);
-
-displayQuestions();
 
 function displayQuestions() {
   for (const q of questions) {
